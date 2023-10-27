@@ -1,0 +1,235 @@
+ * {
+  margin: 0%;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);  
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+  
+}
+
+
+.light {  /*--tag-tag são variaveis, ver mais sobre */
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg); 
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);  
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+background: var(--bg-url) no-repeat top center/cover;
+height: 100vh;
+
+/*Chamado de Shorthand ou atalho, é quando simplifica varios comando em apenas uma linha de texto*/
+}
+
+body * {
+  font-family: 'Gabarito', sans-serif;
+  color: var(--text-color);
+  
+
+}
+
+
+#container {
+    width: 100%;
+    max-width: 588px;
+    margin: 56px auto 0px;
+    padding: 0 24px;
+  
+    
+}
+
+
+/* Profile */
+#profile {
+  text-align: center;
+  padding: 24px;
+  
+}
+
+#profile img {
+  width: 112px;
+  height: 112px;
+  margin: auto;
+  max-width: 400px;
+  border-radius: 50%;
+  object-fit: cover;
+
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+  
+
+}
+
+/* switch */
+ #switch {   /* Criei esse switch para utilizar o "position" ja que engloba o swtch buttom */
+  position: relative;
+  width: 64px;   /* deixei do mesmo tamanho do span para o icone ficar no local certo */
+  
+  margin: 4px auto;
+ 
+  
+}
+
+
+#switch button{
+
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;   /*usado para camadas, sobrepor um comando ou imagem sobre o outro */
+  transform: translateY(-50%);
+
+  animation: slide-back 0.2s;
+
+  
+}
+
+
+.light #switch button {
+ animation: slide-in 0.2s forwards; /*forwards comando usado para manter os atributos da animação no documento */
+}
+
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
+
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  -webkit--backdrop-filter: blur(4px);
+  border-radius: 9999px;
+
+}
+
+
+/*links */
+ul {
+  list-style: none;/*comando usado para tirar os pontinhos da lista*/
+ 
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 24px 0;
+}
+
+ul li a {   /*"a" tag line que ocupa somente o espaço da escrita*/
+  display: flex;
+  align-items: center; /* alinha os itens no eixo x*/
+  justify-content: center;  /* alinha os itens no eixo y*/
+
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color); /*Cor da borda*/
+  border-radius: 8px; /* Tamanho da curvatura da borda*/
+  
+  backdrop-filter: blur(4px); /* Embassamento do botão com o plano de fundo*/
+  -webkit-backdrop-filter: blur(4px); /*dependendo do navegador deve se colocar <width> para aceitar a tag*/
+  
+  text-decoration: none; /* tira o sublinhado do txt */
+  font-weight: 500; /* tamanho da fonte*/
+
+  transition: background 0.2s; /*Transitar de um efeito para outro*/
+}                              /* Foi enfatizado para transitar a cor de fundo quando colocar o mouse me cima do botão*/
+
+
+/*pseudo-selector*/
+ul li a:hover { /* Hover Altera a cor do link quando o mouse está sobre ele */
+  background: var(--surface-color-hover); /* Uma variavel que depende do surface-color*/
+  border: 1.5px solid var(--text-color);
+
+}
+
+/*social links*/
+#social-links {
+    display: flex;
+    justify-content: center; 
+
+    padding: 24px 0; 
+
+    font-size: 24px;
+    
+}
+
+#social-links a {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  transition: background 0.2s;
+  border-radius: 50%;
+
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* media queries */
+@media (min-width:700px){
+  :root {
+   --bg-url: url(./assets/bg-desktop.jpg);
+  
+   }
+
+   .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+   }
+}
+
+/* animation */
+
+@keyframes slide-in{
+  from {
+    left: 0;
+  }
+  to{
+    left: 50%;
+  }
+}
+
+@keyframes slide-back{
+  from {
+    left: 50%;
+  }
+  to{
+    left: 0;
+  }
+}
